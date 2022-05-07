@@ -1,0 +1,179 @@
+local DiscordLib =
+
+    loadstring(game:HttpGet "https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/discord")()
+
+local win = DiscordLib:Window("SkeleHub v0.2")
+
+local serv = win:Server("Natural Disaster", "rbxthumb://type=Asset&id=5107182114&w=150&h=150")
+
+local btns = serv:Channel("Farms")
+
+local main = serv:Channel("Miscs")
+
+btns:Button(
+
+    "Run Auto Farm",
+
+    function()
+
+        DiscordLib:Notification("Notification", "if it's won't stop then click stop auto farm", "Okay!")
+
+loadstring(game:HttpGet("https://pastebin.com/raw/fUX07xtV"))() 
+
+    end
+
+)
+
+btns:Button(
+
+    "Stop Auto Farm",
+
+    function()
+
+        DiscordLib:Notification("Notification", "Okay just wait 3sec", "Okay!")
+
+   game:GetService("TeleportService"):Teleport(game.PlaceId)
+
+    end
+
+)
+
+main:Button(
+
+    "Command List",
+
+    function()
+
+        DiscordLib:Notification("Notification", "Command List", "Gets")
+
+   game.StarterGui:SetCore("SendNotification", {
+
+    Title = "Inf Jump";
+
+    Text = "-ij";
+
+    Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150";
+
+    Duration = 3;
+
+})
+
+wait(3)
+
+   game.StarterGui:SetCore("SendNotification", {
+
+    Title = "Ballons";
+
+    Text = "-gb";
+
+    Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150";
+
+    Duration = 3;
+
+})
+
+wait(3)
+
+   game.StarterGui:SetCore("SendNotification", {
+
+    Title = "Remove Fall Damage";
+
+    Text = "-ws";
+
+    Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150";
+
+    Duration = 3;
+
+})
+
+    end
+
+)
+
+main:Button(
+
+    "Activate Commands",
+
+    function()
+
+local Player = game.Players.LocalPlayer
+
+Player.Chatted:connect(function(chat)
+
+    if chat:match("-ij") then
+
+            local InfiniteJumpEnabled = true
+
+game:GetService("UserInputService").JumpRequest:connect(function()
+
+	if InfiniteJumpEnabled then		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+
+	end
+
+end)
+
+    elseif chat:match("-gb") then
+
+            local player = tostring(game.Players.LocalPlayer.Name)
+
+while true do
+
+if game.Workspace:FindFirstChild("GreenBalloon") then
+
+if not game.Workspace[player]:FindFirstChild("GreenBalloon") and not game.Players.LocalPlayer.Backpack:FindFirstChild("GreenBalloon") then
+
+local workspaceClone = game.Workspace.GreenBalloon:Clone()
+
+workspaceClone.Parent = game.Workspace[player]
+
+end
+
+else
+
+local balloonCheck = game.Workspace:GetDescendants()
+
+local balloonClone
+
+for i, balloon in ipairs(balloonCheck) do
+
+if (tostring(balloon.Name) == "GreenBalloon") then
+
+balloonClone = balloon:Clone()
+
+wait()
+
+end
+
+end
+
+balloonClone.Parent = game.Workspace
+
+local workspaceClone = game.Workspace.GreenBalloon:Clone()
+
+workspaceClone.Parent = game.Workspace[player]
+
+end
+
+wait()
+
+end
+
+    elseif chat:match("-ws") then
+
+    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+
+			if v.Name == "FallDamageScript" then
+
+				v:Remove()
+
+			end
+
+		end
+
+end
+
+    end
+
+)
+
+end) 
